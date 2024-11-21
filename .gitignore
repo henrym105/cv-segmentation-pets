@@ -5,6 +5,7 @@ images/
 *.tar.gz
 Results*/*
 !Results*/*.keras
+!Results*/sample*.png
 
 
 # Byte-compiled / optimized / DLL files

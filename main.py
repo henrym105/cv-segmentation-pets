@@ -5,7 +5,8 @@ import random
 import json
 
 import tensorflow as tf
-from tensorflow.keras.models import load_model, load_img, img_to_array
+from tensorflow.keras.models import load_model
+from tensorflow.keras.utils import load_img, img_to_array
 from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
 
 from model import get_model
@@ -93,8 +94,8 @@ if __name__ == "__main__":
     os.chdir(f"Results{RUN_NAME}")
 
     # Get the model and print its summary
-    if os.path.exists("oxford_segmentation.keras"):
-        model = load_model("oxford_segmentation.keras")
+    if os.path.exists("pet_segmentation.keras"):
+        model = load_model("pet_segmentation.keras")
     else:
         model = get_model(img_size=img_size, num_classes=3)
     model.summary()
@@ -104,7 +105,7 @@ if __name__ == "__main__":
 
     # Define callbacks
     callbacks = [
-        ModelCheckpoint("oxford_segmentation.keras", save_best_only=True),
+        ModelCheckpoint("pet_segmentation.keras", save_best_only=True),
         ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5),
     ]
 
