@@ -2,16 +2,13 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+import json
+
 import tensorflow as tf
-import tensorflow.keras as k
-from tensorflow.keras.models import load_model
-from tensorflow.keras.utils import load_img, img_to_array
+from tensorflow.keras.models import load_model, load_img, img_to_array
 from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
 
 from model import get_model
-import json
-import signal
-import sys
 
 
 def path_to_input_image(path, img_size):
