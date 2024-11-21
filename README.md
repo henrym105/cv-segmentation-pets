@@ -9,6 +9,13 @@ This repository contains code for training and evaluating a convolutional neural
 - Python 3.11.0
 - see more in `requirements.txt`
 
+### Sample Results
+
+Below are some sample results from the model:
+
+![Sample Result 1](Results/sample_results_271.png)
+![Sample Result 2](Results/sample_results_874.png)
+
 ### Installation
 
 1. Clone the repository:
