@@ -47,11 +47,12 @@ def display_mask(pred, source_img, truth_img, i, save_local=False):
     plt.title("Truth Mask")
     plt.imshow(array_to_img(truth_img))
     plt.axis("off")
+
+    plt.tight_layout()
     
     if save_local:
         plt.savefig(f"sample_results_{i}.png")
     
-    plt.tight_layout()
     plt.show()
     plt.close()
 
