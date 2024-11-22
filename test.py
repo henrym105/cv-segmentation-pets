@@ -62,19 +62,27 @@ if __name__ == "__main__":
     train_input_imgs, train_targets, val_input_imgs, val_targets = load_train_val_data(img_size=img_size)
     # random.shuffle(val_input_imgs)
     
+
+    my_img = "huck3.jpeg"
+
     # -------------------------------------------------
-    RUN_NAME = ""
-    os.makedirs(f"Results{RUN_NAME}", exist_ok=True)
-    os.chdir(f"Results{RUN_NAME}")
+    # RUN_NAME = "_huck"
+    # os.makedirs(f"Results{RUN_NAME}", exist_ok=True)
+    # os.chdir(f"Results{RUN_NAME}")
     # -------------------------------------------------
     
-    model = keras.models.load_model("pet_segmentation.keras")
+    model = keras.models.load_model("./Results/pet_segmentation.keras")
 
-    num_samples = 5
-    for i in random.sample(range(len(val_input_imgs)), num_samples):
-        test_img = val_input_imgs[i]
-        test_truth_img = val_targets[i]
-        mask = model.predict(np.expand_dims(test_img, axis=0))[0]
-        
-        display_mask(mask, test_img, test_truth_img, i, save_local=True)
+    # num_samples = 5
+    # imgs = random.sample(range(len(val_input_imgs)), num_samples)
+    # for i in imgs:
+    #     test_img = val_input_imgs[i]
+    #     test_truth_img = val_targets[i]
+    #     mask = model.predict(np.expand_dims(test_img, axis=0))[0]    
+    #     display_mask(mask, test_img, test_truth_img, i, save_local=True)
+
+
+    test_img = img_to_array(load_img(my_img, target_size=img_size))
+    mask = model.predict(np.expand_dims(test_img, axis=0))[0]
+    display_mask(mask, test_img, np.zeros_like(test_img), 0, save_local=True)
 

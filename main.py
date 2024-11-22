@@ -9,7 +9,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import load_img, img_to_array
 from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
 
-from model import get_model
+from model import get_model, alexnet_model
 
 
 def path_to_input_image(path, img_size):
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     train_input_imgs, train_targets, val_input_imgs, val_targets = load_train_val_data(img_size = img_size)
 
     # -------------------------------------------------
-    RUN_NAME = ""
+    RUN_NAME = "myAlexNet"
     # -------------------------------------------------
     os.makedirs(f"Results{RUN_NAME}", exist_ok=True)
     os.chdir(f"Results{RUN_NAME}")
@@ -98,6 +98,7 @@ if __name__ == "__main__":
         model = load_model("pet_segmentation.keras")
     else:
         model = get_model(img_size=img_size, num_classes=3)
+        # model = alexnet_model(img_size=img_size, num_classes=3)
     model.summary()
 
     # Compile the model
