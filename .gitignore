@@ -6,6 +6,7 @@ images/
 Results*/*
 !Results*/*.keras
 !Results*/sample*.png
+.DS_Store*
 
 
 # Byte-compiled / optimized / DLL files
