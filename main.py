@@ -118,6 +118,21 @@ if __name__ == "__main__":
     with open("training_params.json", "w") as json_file:
         json.dump(params, json_file, indent=4)
 
+    # Define callbacks
+    callbacks = [
+        ModelCheckpoint("pet_segmentation.keras", save_best_only=True),
+        ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5),
+        TensorBoard(
+            log_dir='logs', 
+            histogram_freq=0, 
+            write_graph=True,
+            write_images=False,
+            update_freq='epoch', 
+            profile_batch=2,
+            embeddings_freq=0, 
+            embeddings_metadata=None, 
+        ),
+    ]
     history = model.fit(
         train_input_imgs, 
         train_targets, 
